@@ -1,0 +1,39 @@
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=jobportal_db
+      - POSTGRES_USER=jobportal_user
+      - POSTGRES_PASSWORD=jobportal_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - jobportal_net
+
+  django_web:
+    build: .
+    container_name: django_web
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://jobportal_user:jobportal_pass@postgres_db:5432/jobportal_db
+      - SECRET_KEY=my-docker-secret-key-123
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=config.settings.local
+    depends_on:
+      - postgres_db
+    networks:
+      - jobportal_net
+
+volumes:
+  postgres_data:
+
+networks:
+  jobportal_net:
+    driver: bridge
