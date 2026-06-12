@@ -4,13 +4,10 @@
 
 
 
-Home Page
 ![Portfolio Screenshot](https://github.com/muhammadshahid3/job-portal-platform/blob/main/homepage.png?raw=true)
 
-Jobs Descritiptions
 ![Portfolio Screenshot](https://github.com/muhammadshahid3/job-portal-platform/blob/main/jobs.png?raw=true)
 
-
-Jobs apply
-
 ![Portfolio Screenshot](https://github.com/muhammadshahid3/job-portal-platform/blob/main/jobs.png?raw=true)
+
+![Portfolio Screenshot](https://github.com/muhammadshahid3/job-portal-platform/blob/main/all%20view%20jobs.png?raw=true)
